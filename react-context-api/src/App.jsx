@@ -1,12 +1,25 @@
 import { useState } from 'react'
 import './index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Homepage from './pages/Homepage'
+import Posts from './pages/posts/Posts'
+import Contacts from './pages/Contacts'
+import About from './pages/AboutUs'
+import BaseLayout from './layouts/BaseLayout'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-
+      <BrowserRouter>
+        <Routes>
+          <Route element={<BaseLayout />}>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/about" element={<About />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
